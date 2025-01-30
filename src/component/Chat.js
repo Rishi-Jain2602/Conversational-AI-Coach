@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMicrophone, faStop, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faMicrophone, faStop } from '@fortawesome/free-solid-svg-icons';
 import './styles/Chat.css';
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ export default function Chat() {
     const [userMessages, setUserMessages] = useState([]);
     const [responseMessages, setResponseMessages] = useState([]);
     const [timeoutId, setTimeoutId] = useState(null);
-    const mediaRecorder = useRef(null);
+    // const mediaRecorder = useRef(null);
 
     const startDictation = () => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
