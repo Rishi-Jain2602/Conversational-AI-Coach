@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import './styles/Improvements.css';
 
@@ -6,6 +6,7 @@ export default function Improvements() {
     const [improve, setImprove] = useState("Nothing available");
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState(null); 
+    const isFetched = useRef(false); 
 
     const fetchImprovements = async () => {
         try {
@@ -20,7 +21,10 @@ export default function Improvements() {
     };
 
     useEffect(() => {
-        fetchImprovements();
+        if (!isFetched.current) {
+            fetchImprovements();
+            isFetched.current = true; 
+        }
     }, []);
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import './styles/Summary.css';
 
@@ -6,7 +6,8 @@ export default function Summary() {
     const [summary, setSummary] = useState("Nothing available");
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState(null); 
-
+    const isFetched = useRef(false); 
+    
     const fetchImprovements = async () => {
         try {
             const response = await axios.get('http://localhost:8000/convai/summary');
@@ -20,7 +21,10 @@ export default function Summary() {
     };
 
     useEffect(() => {
-        fetchImprovements();
+        if (!isFetched.current) {
+            fetchImprovements();
+            isFetched.current = true; 
+        }
     }, []);
 
     return (
