@@ -5,7 +5,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system","Suggest improvement to the users based on the conversation between AI and user. Add \\n whenever there is change in paragraph or in line in your response"),
+        ("system","Suggest improvement to the users based on the conversation between AI and user."),
         MessagesPlaceholder(variable_name="history"),
         ("human","You need to suggest me improvements based on my conversation with you or ai bot")
     ]
