@@ -1,0 +1,63 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f4f6;
+  }
+  
+  .home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .welcome-text {
+    max-width: 600px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .welcome-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .welcome-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .welcome-text h1 {
+      font-size: 2rem;
+    }
+  
+    .welcome-text p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .welcome-text h1 {
+      font-size: 1.8rem;
+    }
+  
+    .welcome-text p {
+      font-size: 0.9rem;
+    }
+  }

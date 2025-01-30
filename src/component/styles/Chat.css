@@ -1,0 +1,127 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f3f4f6;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.chat-box {
+  width: 100%;
+  max-width: 600px;
+  height: 70vh;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column; /* Messages flow from top to bottom */
+  gap: 12px;
+}
+
+.message {
+  display: flex;
+  max-width: 80%;
+}
+
+.user-message {
+  align-self: flex-end;
+}
+
+.response-message {
+  align-self: flex-start;
+}
+
+.message-text {
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.user-text {
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 12px 12px 0 12px;
+}
+
+.response-text {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  border-radius: 12px 12px 12px 0;
+}
+
+.record-btn-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.record-btn {
+  padding: 16px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.record-btn.recording {
+  background-color: #ef4444;
+}
+
+.record-btn:hover {
+  background-color: #2563eb;
+  transform: scale(1.1);
+}
+
+.record-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-box {
+      height: 60vh;
+      max-width: 90%;
+  }
+
+  .message-text {
+      font-size: 12px;
+      padding: 10px;
+  }
+
+  .record-btn {
+      padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-box {
+      height: 50vh;
+      max-width: 100%;
+  }
+
+  .message-text {
+      font-size: 12px;
+      padding: 8px;
+  }
+
+  .record-btn {
+      padding: 12px;
+  }
+}
