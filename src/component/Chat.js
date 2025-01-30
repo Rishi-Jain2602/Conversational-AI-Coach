@@ -9,7 +9,6 @@ export default function Chat() {
     const [userMessages, setUserMessages] = useState([]);
     const [responseMessages, setResponseMessages] = useState([]);
     const [timeoutId, setTimeoutId] = useState(null);
-    // const mediaRecorder = useRef(null);
 
     const startDictation = () => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -25,25 +24,27 @@ export default function Chat() {
             recognition.onresult = async function (e) {
                 const transcript = e.results[0][0].transcript;
                 recognition.stop();
-                console.log("Transcript: "+transcript)
-                
-                // Send the transcript to the backend (voice_path)
+                const timestamp = new Date().toISOString();
+                                
                 try {
                     const response = await axios.post('http://localhost:8000/convai/chat', { transcript: transcript });
                     console.log("Speech Recognition Response:", response);
                     
-                    setUserMessages((prevMessages) => [...prevMessages, transcript]);  // Add transcript to the user messages
-                    setResponseMessages((prevMessages) => [...prevMessages, response.data]);  // Add API response
+                    setUserMessages((prevMessages) => [...prevMessages,  { text: transcript, timestamp }]);  // Add transcript to the user messages
+                    setResponseMessages((prevMessages) => [...prevMessages, { text: response.data, timestamp: new Date().toISOString() }]);  // Add API response
                 } catch (error) {
+                    alert("Error in voice recognition. Please try again.");
                     console.error('Error in voice analysis:', error);
                 }
             };
-
+            
             recognition.onerror = function (e) {
                 recognition.stop();
+                alert("Error in voice recognition. Please try again.");
                 console.error('Speech Recognition Error:', e);
             };
         } else {
+            alert("Speech recognition is not supported in this browser.");
             console.log("Speech recognition is not supported in this browser.");
         }
     };
@@ -52,8 +53,7 @@ export default function Chat() {
         if (timeoutId) clearTimeout(timeoutId);
         setIsRecording(true);
         startDictation();
-        // Simulate media recorder setup here
-        const newTimeoutId = setTimeout(stopRecording, 5000); // Auto stop after 5 secs
+        const newTimeoutId = setTimeout(stopRecording, 10000); 
         setTimeoutId(newTimeoutId);
     };
 
@@ -65,28 +65,40 @@ export default function Chat() {
 
     const combinedMessages = userMessages.map((message, index) => ({
         type: 'user',
-        text: message,
+        text: message.text,
+        timestamp: message.timestamp,
         id: `user-${index}`,
     })).concat(responseMessages.map((message, index) => ({
         type: 'response',
-        text: message,
+        text: message.text,
+        timestamp: message.timestamp,
         id: `response-${index}`,
     })));
 
     // Sort messages in ascending order
-    const sortedMessages = combinedMessages.sort((a, b) => a.id.localeCompare(b.id));
+    const sortedMessages = combinedMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+    const formatImprovementText = (text) => {
+        return text.split('\n').map((line, index) => {
+            const formattedLine = line.split('**').map((part, partIndex) => {
+                return partIndex % 2 === 0 ? part : <strong key={partIndex}>{part}</strong>;
+            });
+            return <div key={index}>{formattedLine}</div>;
+        });
+    };
 
     return (
         <div className="chat-container">
             <div className="p-4 border-b border-gray-200">
-                <h1 className="text-xl font-semibold text-gray-800 text-center">ConvAI</h1>
+                <h1 className="text-xl font-semibold text-gray-800 text-center ">ConvAI</h1>
             </div>
             <div className="chat-box">
                 {/* Messages */}
                 {sortedMessages.map((message) => (
                     <div key={message.id} className={`message ${message.type}-message`}>
                         <div className={`message-text ${message.type}-text`}>
-                            {message.text}
+                            <p>{formatImprovementText(message.text)}</p>
+                            <span className="message-timestamp">{new Date(message.timestamp).toLocaleTimeString()}</span>
                         </div>
                     </div>
                 ))}

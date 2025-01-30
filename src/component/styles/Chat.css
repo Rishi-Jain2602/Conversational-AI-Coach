@@ -15,6 +15,7 @@ body, html {
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .chat-box {
@@ -49,6 +50,7 @@ body, html {
   border-radius: 12px;
   font-size: 14px;
   line-height: 1.4;
+  position: relative;
 }
 
 .user-text {
@@ -63,6 +65,20 @@ body, html {
   border-radius: 12px 12px 12px 0;
 }
 
+/* Improved Timestamp Styles */
+.message-timestamp {
+  font-size: 10px;
+  color: #1a1b1c;  /* More subtle gray color */
+  text-align: right;  
+  font-family: 'Courier New', Courier, monospace;
+  position: absolute;
+  bottom: 8px;
+  right: 10px;  /* Slightly closer to the bottom-right corner */
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Record Button Styling */
 .record-btn-container {
   margin-top: 20px;
   display: flex;
@@ -108,6 +124,10 @@ body, html {
   .record-btn {
       padding: 14px;
   }
+
+  .message-timestamp {
+    font-size: 9px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -123,5 +143,9 @@ body, html {
 
   .record-btn {
       padding: 12px;
+  }
+
+  .message-timestamp {
+    font-size: 9px;
   }
 }
