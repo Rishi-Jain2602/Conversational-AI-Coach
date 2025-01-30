@@ -3,6 +3,10 @@
 # dependencies
 /backend/myenv
 /backend/.env
+/backend/__pycache__
+/backend/Routes/__pycache__
+/backend/Model/__pycache__
+
 /node_modules
 /.pnp
 .pnp.js
