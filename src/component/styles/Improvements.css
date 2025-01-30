@@ -2,8 +2,8 @@
 .improvements-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    /* align-items: center; */
+    min-height: auto;
     background-color: #f4f4f9;
     padding: 20px;
 }
@@ -15,7 +15,7 @@
     padding: 30px;
     max-width: 600px;
     width: 100%;
-    text-align: center;
+    text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -29,6 +29,7 @@
     font-weight: 600;
     color: #333;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .improvements-text {

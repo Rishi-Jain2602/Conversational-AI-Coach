@@ -27,6 +27,17 @@ export default function Summary() {
         }
     }, []);
 
+    const formatImprovementText = (text) => {
+        return text.split('\n').map((line, index) => {
+            const formattedLine = line.split('**').map((part, partIndex) => {
+                return partIndex % 2 === 0 ? part : <strong key={partIndex}>{part}</strong>;
+            });
+            return <p key={index}>{formattedLine}</p>;
+        });
+    };
+    
+
+
     return (
         <div className="summary-container">
             <div className="summary-card">
@@ -36,7 +47,7 @@ export default function Summary() {
                 ) : error ? (
                     <p className="error-message">{error}</p>    
                 ) : (
-                    <p className="summary-text">{summary}</p> 
+                    <p className="summary-text">{formatImprovementText(summary)}</p> 
                 )}
             </div>
         </div>

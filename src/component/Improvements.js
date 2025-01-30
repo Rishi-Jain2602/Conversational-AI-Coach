@@ -27,6 +27,17 @@ export default function Improvements() {
         }
     }, []);
 
+    const formatImprovementText = (text) => {
+        return text.split('\n').map((line, index) => {
+            const formattedLine = line.split('**').map((part, partIndex) => {
+                return partIndex % 2 === 0 ? part : <strong key={partIndex}>{part}</strong>;
+            });
+    
+            return <p key={index}>{formattedLine}</p>;
+        });
+    };
+    
+
     return (
         <div className="improvements-container">
             <div className="improvements-card">
@@ -36,7 +47,7 @@ export default function Improvements() {
                 ) : error ? (
                     <p className="error-message">{error}</p>    
                 ) : (
-                    <p className="improvements-text">{improve}</p> 
+                    <p className="improvements-text">{formatImprovementText(improve)}</p> 
                 )}
             </div>
         </div>
