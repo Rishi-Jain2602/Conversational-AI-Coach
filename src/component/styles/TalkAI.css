@@ -43,6 +43,7 @@ body, html {
 
 .response-message {
   align-self: flex-start;
+  
 }
 
 .message-text {
@@ -54,8 +55,8 @@ body, html {
 }
 
 .user-text {
-  background-color: #3b82f6;
-  color: white;
+  background-color: #e2e8f0;
+  color: #1e293b;
   border-radius: 12px 12px 0 12px;
 }
 
@@ -107,6 +108,37 @@ body, html {
 
 .record-btn:active {
   transform: scale(0.95);
+}
+
+/* memory Button */
+.memory-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.memory-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10b981, #047857);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.memory-btn:hover {
+  background: linear-gradient(135deg, #047857, #10b981);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.memory-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 /* Responsive Design */

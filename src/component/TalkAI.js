@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophone, faStop } from '@fortawesome/free-solid-svg-icons';
 import './styles/TalkAI.css';
@@ -8,7 +8,7 @@ export default function TalkAI() {
     const [isRecording, setIsRecording] = useState(false);
     const [userMessages, setUserMessages] = useState([]);
     const [responseMessages, setResponseMessages] = useState([]);
-    const [timeoutId, setTimeoutId] = useState(null);
+    const [timeoutId, setTimeoutId] = useState(null);   
 
     const startDictation = () => {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -53,7 +53,7 @@ export default function TalkAI() {
         if (timeoutId) clearTimeout(timeoutId);
         setIsRecording(true);
         startDictation();
-        const newTimeoutId = setTimeout(stopRecording, 10000); 
+        const newTimeoutId = setTimeout(stopRecording, 20000); 
         setTimeoutId(newTimeoutId);
     };
 
@@ -87,10 +87,23 @@ export default function TalkAI() {
         });
     };
 
+    const handleMemory = async (e)=>{
+        try {
+            const response = await axios.get('http://localhost:8000/convai/memory');
+            alert(response.data)
+            console.log("Memory Cleared");
+            setUserMessages([]);
+            setResponseMessages([]);
+        } catch (error) {
+            alert("Error in Clearing the memory. Please try again later");
+            console.error('Error in clearning the memory:', error);
+        }
+    }
+
     return (
         <div className="chat-container">
             <div className="p-4 border-b border-gray-200">
-                <h1 className="text-xl font-semibold text-gray-800 text-center ">ConvAI</h1>
+                <h1 className="text-xl font-semibold text-gray-800 text-center ">AI Voice Chat</h1>
             </div>
             <div className="chat-box">
                 {/* Messages */}
@@ -110,6 +123,11 @@ export default function TalkAI() {
                     onClick={isRecording ? stopRecording : startRecording}
                 >
                     <FontAwesomeIcon icon={isRecording ? faStop : faMicrophone} size="lg" />
+                </button>
+            </div>
+            <div className="memory-container">
+                <button className="memory-btn" onClick={handleMemory}>
+                    Clear Memory
                 </button>
             </div>
         </div>

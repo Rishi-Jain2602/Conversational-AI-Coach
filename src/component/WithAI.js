@@ -120,12 +120,25 @@ export default function WithAI() {
             return <div key={index}>{formattedLine}</div>;
         });
     };
+    const handleMemory = async (e)=>{
+        try {
+            const response = await axios.get('http://localhost:8000/convai/memory');
+            alert(response.data)
+            console.log("Memory Cleared");
+            setUser1Messages([]);
+            setUser2Messages([]);
+            setResponseMessages([]);
+        } catch (error) {
+            alert("Error in Clearing the memory. Please try again later");
+            console.error('Error in clearning the memory:', error);
+        }
+    }
 
     return (
         <>
             <div className="chat-container">
                 <div className="p-4 border-b border-gray-200">
-                    <h1 className="text-xl font-semibold text-gray-800 text-center">ConvAI</h1>
+                    <h1 className="text-xl font-semibold text-gray-800 text-center">AI Powered Duo Chat</h1>
                 </div>
                 <div className="chat-box">
                     {/* Messages */}
@@ -161,9 +174,12 @@ export default function WithAI() {
                         </button>
                     </div>
                 </div>
-                <div className="submit-container">
-                    <button className="submit-btn" onClick={handleSubmit}>
+                <div className="button-container">
+                    <button className="button-btn" onClick={handleSubmit}>
                         Submit Transcripts
+                    </button>
+                    <button className="button-btn" onClick={handleMemory}>
+                        Clear Memory
                     </button>
                 </div>
             </div>
