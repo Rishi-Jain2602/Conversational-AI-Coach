@@ -21,11 +21,14 @@ export default function Navbar() {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/talkAI">Talk with AI</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/withAI">1 vs 1 with AI</Link>
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Chat Features
+                                </Link>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><Link className="dropdown-item" to="/talkAI">AI Voice Chat</Link></li>
+                                    <li><Link className="dropdown-item" to="/withAI">AI-Powered Duo Chat</Link></li>
+                                </ul>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/Improvements">Improvements</Link>
