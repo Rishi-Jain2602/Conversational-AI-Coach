@@ -19,8 +19,15 @@ app.add_middleware(
 class talkAIInput(BaseModel):
     transcript: str
 
+prev_memory_alignment = None
+
 @app.post("/convai/talkAI")
 def voice_analyzer(text:talkAIInput):
+    global prev_memory_alignment
+    if prev_memory_alignment == 'withAI':
+        memory.chat_memory.clear()
+
+    prev_memory_alignment = 'talkAI'
     audio_transcript = text.transcript
     response = reply_user(audio_transcript)
     return response
@@ -31,6 +38,11 @@ class withAIInput(BaseModel):
 
 @app.post("/convai/withAI")
 def voice_analyzer(query:withAIInput):
+    global prev_memory_alignment
+    if prev_memory_alignment == 'talkAI':
+        memory.chat_memory.clear()
+
+    prev_memory_alignment = 'withAI'
     user1 = query.user1
     user2 = query.user2
     response = Analyze_users(user1,user2)
