@@ -22,7 +22,10 @@ export default function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Chat">Chat</Link>
+                                <Link className="nav-link" to="/talkAI">Talk with AI</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/withAI">1 vs 1 with AI</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/Improvements">Improvements</Link>

@@ -1,10 +1,10 @@
 import React, { useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophone, faStop } from '@fortawesome/free-solid-svg-icons';
-import './styles/Chat.css';
+import './styles/TalkAI.css';
 import axios from 'axios';
 
-export default function Chat() {
+export default function TalkAI() {
     const [isRecording, setIsRecording] = useState(false);
     const [userMessages, setUserMessages] = useState([]);
     const [responseMessages, setResponseMessages] = useState([]);
@@ -27,7 +27,7 @@ export default function Chat() {
                 const timestamp = new Date().toISOString();
                                 
                 try {
-                    const response = await axios.post('http://localhost:8000/convai/chat', { transcript: transcript });
+                    const response = await axios.post('http://localhost:8000/convai/talkAI', { transcript: transcript });
                     console.log("Speech Recognition Response:", response);
                     
                     setUserMessages((prevMessages) => [...prevMessages,  { text: transcript, timestamp }]);  // Add transcript to the user messages
