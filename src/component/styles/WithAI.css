@@ -1,0 +1,191 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f3f4f6;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f9fafb;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-box {
+  width: 100%;
+  max-width: 600px;
+  height: 70vh;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column; /* Messages flow from top to bottom */
+  gap: 12px;
+  margin-bottom: 20px; /* Space between chatbox and buttons */
+}
+
+.message {
+  display: flex;
+  max-width: 80%;
+}
+
+.user-message {
+  align-self: flex-start;
+  background-color: #e5e7eb; /* Light gray for User 1 */
+  border-radius: 12px 12px 12px 0;
+}
+
+.response-message {
+  align-self: flex-end;
+  background-color: #10b981; /* Green for AI response */
+  color: white;
+  border-radius: 12px 12px 0 12px;
+}
+
+.message-text {
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+}
+
+/* Improved Timestamp Styles */
+.message-timestamp {
+  font-size: 10px;
+  color: #6b7280; /* Subtle gray color */
+  text-align: right;
+  font-family: 'Courier New', Courier, monospace;
+  position: absolute;
+  bottom: 8px;
+  right: 10px; /* Slightly closer to the bottom-right corner */
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Buttons Container */
+.different-voice {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.record-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.record-btn {
+  padding: 16px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.record-btn.recording {
+  background-color: #ef4444;
+}
+
+.record-btn:hover {
+  background-color: #2563eb;
+  transform: scale(1.1);
+}
+
+.record-btn:active {
+  transform: scale(0.95);
+}
+
+/* Submit Button */
+.submit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10b981, #047857);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #047857, #10b981);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-box {
+      height: 60vh;
+      max-width: 90%;
+  }
+
+  .message-text {
+      font-size: 12px;
+      padding: 10px;
+  }
+
+  .record-btn {
+      padding: 14px;
+  }
+
+  .message-timestamp {
+      font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-box {
+      height: 50vh;
+      max-width: 100%;
+  }
+
+  .message-text {
+      font-size: 12px;
+      padding: 8px;
+  }
+
+  .record-btn {
+      padding: 12px;
+  }
+
+  .message-timestamp {
+      font-size: 9px;
+  }
+
+  .different-voice {
+      flex-direction: column;
+      gap: 20px;
+  }
+}
