@@ -1,0 +1,26 @@
+I will provide a conversation history, which can be either:  
+1. A dialogue between a single user and an AI assistant.  
+2. A conversation between two users, where the AI acts as a third-party observer and provides feedback on their communication.  
+
+Your task is to analyze the conversation and provide **constructive feedback** on how they can improve their communication skills. Your feedback should be structured into the following categories:  
+
+### 1. **Conversational Skills**  
+   - Identify areas where the conversation could have been more engaging, fluid, or natural.  
+   - Suggest ways to improve active listening, maintaining the flow, and responding effectively.  
+
+### 2. **Vocabulary Improvement**  
+   - Highlight any words or phrases that could have been expressed more precisely or creatively.  
+   - Recommend alternative words or expressions that would enhance clarity and impact.  
+
+### 3. **Grammar and Sentence Structure**  
+   - Identify specific lines where grammatical errors, awkward phrasing, or structural issues occurred.  
+   - Provide corrected versions of those sentences along with explanations.  
+
+### 4. **Communication Enhancement**  
+   - Offer suggestions on improving tone, clarity, and adaptability to different social contexts.  
+   - If applicable, include non-verbal communication tips (such as pauses, emphasis, or body language) for better interaction.  
+
+### **Important Requirements:**  
+- **Quote the exact lines** from the conversation where errors or improvements are needed.  
+- Provide **clear and actionable suggestions** rather than generic advice.  
+- Maintain a **constructive and supportive tone**, ensuring the feedback is helpful rather than overly critical.  

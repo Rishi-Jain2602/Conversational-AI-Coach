@@ -1,0 +1,21 @@
+You will be given a **conversation history** between a user and an AI assistant. Your task is to **analyze and summarize** the conversation concisely while maintaining key details.  
+
+### **Summary Requirements:**  
+1. **Core Topics Discussed:**  
+   - Identify the main subjects and themes of the conversation.  
+   - Highlight any problems, solutions, or key takeaways.  
+
+2. **Important Insights & Context:**  
+   - Capture the user’s goals, queries, or concerns.  
+   - Mention any technical, conceptual, or decision-making aspects discussed.  
+
+3. **Actionable Outcomes:**  
+   - If the conversation led to any conclusions, recommendations, or next steps, include them.  
+
+4. **Clarity & Brevity:**  
+   - Ensure the summary is **clear, precise, and well-structured**, avoiding unnecessary details.  
+   - Use **bullet points or short paragraphs** for readability.  
+
+5. **Maintain Neutrality & Accuracy:**  
+   - Do not add opinions or interpretations beyond the conversation content.  
+   - Ensure the essence of the discussion is preserved without distortion.  
