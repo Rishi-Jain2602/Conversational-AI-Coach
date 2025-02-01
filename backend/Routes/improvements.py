@@ -1,11 +1,14 @@
-from Routes.reply import memory
+from Model.memory import memory
 from Model.mistral import llm
 from langchain_core.prompts import ChatPromptTemplate,MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
 
+f = open("Routes/Prompts/improvement.txt", "r")
+imp_prompt = f.read()
+
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system","Suggest improvement to the users based on the conversation between AI and user."),
+        ("system",f"{imp_prompt}"),
         MessagesPlaceholder(variable_name="history"),
         ("human","You need to suggest me improvements based on my conversation with you or ai bot")
     ]
