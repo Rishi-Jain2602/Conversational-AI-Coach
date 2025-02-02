@@ -27,7 +27,7 @@ export default function WithAI() {
 
             recognition.onresult = async function (e) {
                 const transcript = e.results[0][0].transcript;
-                console.log("User said: ", transcript);
+                // console.log("User said: ", transcript);
                 recognition.stop();
                 setTranscript(transcript); // Store the user's transcript in the respective state
                 setIsRecording(false);
@@ -80,7 +80,7 @@ export default function WithAI() {
 
         try {
             const response = await axios.post('http://localhost:8000/convai/withAI', { user1: user1Transcript, user2: user2Transcript });
-            console.log("Speech Recognition Response:", response);
+            // console.log("Speech Recognition Response:", response);
 
             const timestamp = new Date().toISOString();
             
@@ -123,8 +123,8 @@ export default function WithAI() {
     const handleMemory = async (e)=>{
         try {
             const response = await axios.get('http://localhost:8000/convai/memory');
-            alert(response.data)
-            console.log("Memory Cleared");
+            alert("Chats are cleared")
+            console.log("Chats are cleared");
             setUser1Messages([]);
             setUser2Messages([]);
             setResponseMessages([]);
@@ -179,7 +179,7 @@ export default function WithAI() {
                         Submit Transcripts
                     </button>
                     <button className="button-btn" onClick={handleMemory}>
-                        Clear Memory
+                        Clear Chats
                     </button>
                 </div>
             </div>

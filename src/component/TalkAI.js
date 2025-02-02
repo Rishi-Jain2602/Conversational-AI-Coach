@@ -28,7 +28,7 @@ export default function TalkAI() {
                                 
                 try {
                     const response = await axios.post('http://localhost:8000/convai/talkAI', { transcript: transcript });
-                    console.log("Speech Recognition Response:", response);
+                    // console.log("Speech Recognition Response:", response);
                     
                     setUserMessages((prevMessages) => [...prevMessages,  { text: transcript, timestamp }]);  // Add transcript to the user messages
                     setResponseMessages((prevMessages) => [...prevMessages, { text: response.data, timestamp: new Date().toISOString() }]);  // Add API response
@@ -90,7 +90,7 @@ export default function TalkAI() {
     const handleMemory = async (e)=>{
         try {
             const response = await axios.get('http://localhost:8000/convai/memory');
-            alert(response.data)
+            alert("Chats are Cleared")
             console.log("Memory Cleared");
             setUserMessages([]);
             setResponseMessages([]);
@@ -127,7 +127,7 @@ export default function TalkAI() {
             </div>
             <div className="memory-container">
                 <button className="memory-btn" onClick={handleMemory}>
-                    Clear Memory
+                    Clear Chats
                 </button>
             </div>
         </div>
