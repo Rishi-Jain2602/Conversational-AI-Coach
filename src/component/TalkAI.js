@@ -27,7 +27,7 @@ export default function TalkAI() {
                 const timestamp = new Date().toISOString();
                                 
                 try {
-                    const response = await axios.post('http://localhost:8000/convai/talkAI', { transcript: transcript });
+                    const response = await axios.post('https://conversational-ai-coach-backend.onrender.com/convai/talkAI', { transcript: transcript });
                     // console.log("Speech Recognition Response:", response);
                     
                     setUserMessages((prevMessages) => [...prevMessages,  { text: transcript, timestamp }]);  // Add transcript to the user messages
@@ -89,7 +89,7 @@ export default function TalkAI() {
 
     const handleMemory = async (e)=>{
         try {
-            const response = await axios.get('http://localhost:8000/convai/memory');
+            const response = await axios.get('https://conversational-ai-coach-backend.onrender.com/convai/memory');
             alert("Chats are Cleared")
             console.log("Memory Cleared");
             setUserMessages([]);

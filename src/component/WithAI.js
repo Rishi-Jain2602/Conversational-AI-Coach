@@ -79,7 +79,7 @@ export default function WithAI() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/convai/withAI', { user1: user1Transcript, user2: user2Transcript });
+            const response = await axios.post('https://conversational-ai-coach-backend.onrender.com/convai/withAI', { user1: user1Transcript, user2: user2Transcript });
             // console.log("Speech Recognition Response:", response);
 
             const timestamp = new Date().toISOString();
@@ -122,7 +122,7 @@ export default function WithAI() {
     };
     const handleMemory = async (e)=>{
         try {
-            const response = await axios.get('http://localhost:8000/convai/memory');
+            const response = await axios.get('https://conversational-ai-coach-backend.onrender.com/convai/memory');
             alert("Chats are cleared")
             console.log("Chats are cleared");
             setUser1Messages([]);
